@@ -134,4 +134,401 @@
       ]),
     ],
   };
+
+  const cohortRecordings = {
+    "week-1": [
+      {
+        "id": "cohort-video-01",
+        "title": "1. Fundamentals & Lifecycle of LLM Application Evaluation",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/1w49aqXVh9FrIjf71N8q0rQSVvrBWKDAd/view",
+        "duration": "56:40",
+        "description": "Why evals matter and how they change from prototype to production."
+      },
+      {
+        "id": "cohort-video-02",
+        "title": "2. Systematic Error Analysis",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/1Rns5cDOYzc1Au94aWYtqoe-up4YOqZ5n/view",
+        "duration": "1:01:39",
+        "description": "Review traces and identify recurring failures worth measuring."
+      },
+      {
+        "id": "cohort-video-03",
+        "title": "Braintrust Tutorial — Wayde Gilliam",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/1QTd-OiX0M7d4Aaea9cw_Q6D2XNOLz-fs/view",
+        "duration": "43:02",
+        "description": "Guest session"
+      },
+      {
+        "id": "cohort-video-04",
+        "title": "Office Hours",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/1fOnz6U124L3r6RbOWd1UpZF5TEoeDzLv/view",
+        "duration": "1:40:14",
+        "description": "Office hours"
+      }
+    ],
+    "week-2": [
+      {
+        "id": "cohort-video-05",
+        "title": "3. More Error Analysis & Collaborative Evaluation",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/1qXZiVZweWYZVqpDdlgdwaBe357wWET2y/view",
+        "duration": "59:34",
+        "description": "Agree on quality criteria and apply them to real examples."
+      },
+      {
+        "id": "cohort-video-06",
+        "title": "4. Automated Evaluators",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/1wSxmdiMt3UZI4caaOuG3mDyfgMrlt6Fi/view",
+        "duration": "1:00:34",
+        "description": "When to use deterministic checks and when to use an LLM judge."
+      },
+      {
+        "id": "cohort-video-07",
+        "title": "Taming Diffusion QR Codes with Evals and Inference-Time Scaling — Charles Frye",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/1LO99uC_RwEIlurOJ2uxhTDtVPo5RJ_Jp/view",
+        "duration": "44:43",
+        "description": "Guest sessions"
+      },
+      {
+        "id": "cohort-video-08",
+        "title": "10× Your RAG Evaluation by Avoiding These Pitfalls — Skylar Payne",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/1MAO7XgImHP6pfeFuHc6kx2YXY1lqhzlD/view",
+        "duration": "28:25",
+        "description": "Guest sessions"
+      },
+      {
+        "id": "cohort-video-09",
+        "title": "Office Hours · Session 1",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/1fq6GhLsdpMcXICRUEwOop51YU8iqabSK/view",
+        "duration": "1:18:26",
+        "description": "Office hours"
+      },
+      {
+        "id": "cohort-video-10",
+        "title": "Office Hours · Session 2",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/1cEiTzXnnmS2Z-ugcYWTY3H5hMyJjazdy/view",
+        "duration": "47:11",
+        "description": "Office hours"
+      },
+      {
+        "id": "cohort-workshop-12-1-part-1",
+        "title": "Braintrust: walkthrough for HW 1 and 2, part 1",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/1nes0Awfwqbhh6IGUF6t7544uKPTIH--f/view",
+        "duration": "10:50",
+        "description": "Practice · HW 1 and 2"
+      },
+      {
+        "id": "cohort-workshop-12-1-part-2",
+        "title": "Braintrust: walkthrough for HW 1 and 2, part 2",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/1Stl3VQVT9MicQIWHsgZuV_aFaYzQAgsf/view",
+        "duration": "5:13",
+        "description": "Practice · HW 1 and 2"
+      },
+      {
+        "id": "cohort-workshop-12-2",
+        "title": "Phoenix: walkthrough for HW 1 and 2",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/1j-tXwyWCS8em6PbFCoTt5MFJ7tuQChye/view",
+        "duration": "15:04",
+        "description": "Practice · HW 1 and 2"
+      },
+      {
+        "id": "cohort-workshop-12-3",
+        "title": "LangSmith: walkthrough for HW 1 and 2",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/1KKizb8WAa9mcdYiIKb7i1jp7hYgxSCsG/view",
+        "duration": "22:41",
+        "description": "Practice · HW 1 and 2"
+      }
+    ],
+    "week-3": [
+      {
+        "id": "cohort-video-11",
+        "title": "5. More Automated Evaluators",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/1R3IKdNs9GwirrRR1jKFutPLwotqx6OU_/view",
+        "duration": "55:55",
+        "description": "Validate an LLM judge against human labels and interpret the results."
+      },
+      {
+        "id": "cohort-video-12",
+        "title": "6. RAG & Complex Architectures",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/1tVZUqZ0sz2P1Im26pNKl5V_5JG5M_MJX/view",
+        "duration": "59:46",
+        "description": "Evaluate retrieval, generation, and multi-step pipelines separately."
+      },
+      {
+        "id": "cohort-video-13",
+        "title": "Scaling Inference-Time Compute for Better LLM Judges — Leonard Tang",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/12CES5zYBibyvOSIhDAsbo0408dj3d2aV/view",
+        "duration": "31:08",
+        "description": "Guest sessions"
+      },
+      {
+        "id": "cohort-video-14",
+        "title": "Building Custom Eval Tools with Coding Agents — Isaac Flath",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/1pEObi9refcOl0NgVImlRV-M3Pa6TAlcq/view",
+        "duration": "46:39",
+        "description": "Guest sessions"
+      },
+      {
+        "id": "cohort-video-15",
+        "title": "From Vibe Checks to Evals to Feedback Loops — David Karam",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/14cocxgc3_f8Zd5pgXjKrZuHUPGOoBzc7/view",
+        "duration": "30:02",
+        "description": "Guest sessions"
+      },
+      {
+        "id": "cohort-video-16",
+        "title": "A Playbook for Building AI Agents You Can Trust — Udi Menkes",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/1HTZowPCsm4xUCAphJm9XedF8dTOCIZ70/view",
+        "duration": "38:25",
+        "description": "Guest sessions"
+      },
+      {
+        "id": "cohort-video-17",
+        "title": "AI Evals in Vertical Industries — Chris Lovejoy",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/10hJwkgAViN66LO7cQKhlW1A33jo5kg1_/view",
+        "duration": "34:15",
+        "description": "Guest sessions"
+      },
+      {
+        "id": "cohort-video-18",
+        "title": "Arize Phoenix Tutorial — Mikyo King",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/1hN84S2Un4Nu3eQlwJ09SYlE3sqviP3lh/view",
+        "duration": "49:02",
+        "description": "Guest sessions"
+      },
+      {
+        "id": "cohort-video-19",
+        "title": "Office Hours · Session 1",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/1Y0Y3cu8FMzN6kN3ntJlz8baJcdEJwKJG/view",
+        "duration": "22:32",
+        "description": "Office hours"
+      },
+      {
+        "id": "cohort-video-20",
+        "title": "Office Hours · Session 2",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/12FA8P_5s-xtmDuxd8zkXpig_b--Ft-zg/view",
+        "duration": "24:20",
+        "description": "Office hours"
+      },
+      {
+        "id": "cohort-video-21",
+        "title": "Office Hours · Session 3",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/1O-DPHojPfx-Vwbm6aCHaXQKyhkpG1pSZ/view",
+        "duration": "55:49",
+        "description": "Office hours"
+      },
+      {
+        "id": "cohort-workshop-3-1",
+        "title": "Braintrust: walkthrough for HW 3",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/1f6PvQTh_I-vpGXC-UJL6L8VRnkBj9F6U/view",
+        "duration": "21:41",
+        "description": "Practice · HW 3"
+      },
+      {
+        "id": "cohort-workshop-3-2",
+        "title": "Phoenix: walkthrough for HW 3",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/1Vn37cAAEF0_2ZBS1QUVoZghq1KJOoR0l/view",
+        "duration": "16:39",
+        "description": "Practice · HW 3"
+      }
+    ],
+    "week-4": [
+      {
+        "id": "cohort-video-22",
+        "title": "7. Efficient Continuous Human Review Systems",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/1kODb70AGXS-TAVQOQNHsm_FZVuGV62rP/view",
+        "duration": "59:02",
+        "description": "Set up ongoing human review and decide which cases to annotate."
+      },
+      {
+        "id": "cohort-video-23",
+        "title": "8. Cost Optimization",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/1UpOMaHAuT--YI42E33HJ3Uv3W1R3CT5k/view",
+        "duration": "1:03:11",
+        "description": "Trade-offs between quality, cost, and latency."
+      },
+      {
+        "id": "cohort-video-24",
+        "title": "Techniques for Evaluating Agents — SallyAnn DeLucia",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/1Og7rAfHUW6rNIbHu8lwlz8fieDWKGo8o/view",
+        "duration": "33:37",
+        "description": "Guest sessions"
+      },
+      {
+        "id": "cohort-video-25",
+        "title": "LangSmith Tutorial — Harrison Chase",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/1kJhP91DGNj9ZhmxTYOMob-FSOAfXtKz_/view",
+        "duration": "48:24",
+        "description": "Guest sessions"
+      },
+      {
+        "id": "cohort-video-26",
+        "title": "From Noob to 5 Automated Evals in 4 Weeks (as a PM) — Teresa Torres",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/1KytaTYcTlERU21jrc_vosXrq-3IcbQyt/view",
+        "duration": "1:10:21",
+        "description": "Guest sessions"
+      },
+      {
+        "id": "cohort-video-27",
+        "title": "SolveIt: The Thinking Developer’s Environment — Jeremy Howard & Johno Whitaker",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/1No_cZMSKxmSZ1dzLyvzM1HrNA9MyQGVg/view",
+        "duration": "1:42:26",
+        "description": "Guest sessions"
+      },
+      {
+        "id": "cohort-video-28",
+        "title": "Testing Real AI Products Live — Robert Ta",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/1LWq_KadE4V49g7mnXt7luc2SAaFGcgwt/view",
+        "duration": "1:00:49",
+        "description": "Guest sessions"
+      },
+      {
+        "id": "cohort-video-29",
+        "title": "Fireside Chat with DSP Creator — Omar Khattab",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/1FXmm3pD9bnoMw4IpPBdeESMy_gpSn5P3/view",
+        "duration": "44:59",
+        "description": "Guest sessions"
+      },
+      {
+        "id": "cohort-video-30",
+        "title": "Office Hours · Session 1",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/1ylxOxqmkSOMGXbWo8w8_bBSfZuqFGyJe/view",
+        "duration": "1:06:30",
+        "description": "Office hours"
+      },
+      {
+        "id": "cohort-video-31",
+        "title": "Office Hours · Bonus session",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/1E4Jyenv1XOY-u0XsyBlwVqL2f-33MvSC/view",
+        "duration": "1:05:26",
+        "description": "Office hours"
+      },
+      {
+        "id": "cohort-workshop-4-1",
+        "title": "Braintrust: walkthrough for HW 4",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/1Q_R12TTBO4ToyIuS_EcIFJ0pMoLO8p1I/view",
+        "duration": "23:11",
+        "description": "Practice · HW 4"
+      },
+      {
+        "id": "cohort-workshop-4-2",
+        "title": "Phoenix: walkthrough for HW 4",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/1SIH_i8JfCy7U2w9uMSkEUK1_o4MH1eDk/view",
+        "duration": "16:38",
+        "description": "Practice · HW 4"
+      }
+    ],
+    "after": [
+      {
+        "id": "cohort-workshop-5-1",
+        "title": "Braintrust: walkthrough for HW 5",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/1T6YNnUMPgiuLRVw6d6uO0OeOPj3-L4A6/view",
+        "duration": "22:03",
+        "description": "Practice · HW 5"
+      },
+      {
+        "id": "cohort-workshop-5-2",
+        "title": "Phoenix: walkthrough for HW 5",
+        "kind": "video",
+        "access": "invitation",
+        "url": "https://drive.google.com/file/d/1C6czwUj_0LVIvYGKsducVYzEHl74DgEg/view",
+        "duration": "14:57",
+        "description": "Practice · HW 5"
+      }
+    ]
+  };
+
+  window.COURSE.sections[0].groups[0].items.push(resource(
+    'cohort-drive-folder', 'July 2025 recordings on Google Drive',
+    'https://drive.google.com/drive/folders/1nvbYZsmEPTxp7ZUwPubJqAUNLztH-Cwd',
+    'Sign in to Google Drive with the account that received an invitation.',
+  ));
+  for (const chapter of window.COURSE.sections) {
+    const items = cohortRecordings[chapter.id];
+    if (!items) continue;
+    chapter.groups.push({
+      title: 'Cohort recordings · Invitation required',
+      collapsible: true,
+      items,
+    });
+  }
 })();

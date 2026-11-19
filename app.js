@@ -167,7 +167,7 @@
   function renderSection(section) {
     const parts = [sectionHeader(section.title, section.subtitle)];
     for (const group of section.groups) {
-      if (group.items.length) parts.push(renderGroup(group.items, group.title));
+      if (group.items.length) parts.push(renderGroup(group.items, group.title, group.collapsible));
     }
     const index = course.sections.indexOf(section);
     const footer = element('nav', 'section-footer');
@@ -194,9 +194,9 @@
     content.replaceChildren(header, ...results);
   }
 
-  function renderGroup(items, title) {
-    const group = element('section', 'group');
-    if (title) group.append(element('h3', 'group-title', title));
+  function renderGroup(items, title, collapsible = false) {
+    const group = element(collapsible ? 'details' : 'section', 'group');
+    if (title) group.append(element(collapsible ? 'summary' : 'h3', 'group-title', title));
     const list = element('ul', 'item-list');
     for (const item of items) list.append(renderItem(item, title ? 'h4' : 'h3'));
     group.append(list);
@@ -251,8 +251,7 @@
         link.classList.add('primary');
         actions.append(link, completionButton(item));
       }
-    }
-    else if (item.kind === 'video' && /^[A-Za-z0-9_-]{11}$/.test(item.youtubeId) && getUrl(item)) actions.append(...videoButtons(item, card));
+    } else if (item.kind === 'video' && /^[A-Za-z0-9_-]{11}$/.test(item.youtubeId) && getUrl(item)) actions.append(...videoButtons(item, card));
     else if (item.kind === 'pdf') {
       const open = resourceLink(item, 'Open PDF');
       const download = resourceLink(item, 'Download', true);
