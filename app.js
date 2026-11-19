@@ -17,12 +17,13 @@
   }
 
   if (!course?.sections?.length) {
-    content.append(element('p', 'empty-state', 'Программа не загрузилась. Проверьте, что файл course-data.js находится рядом с index.html, и обновите страницу.'));
+    content.append(element('p', 'empty-state', 'The syllabus did not load. Place course-data.js next to index.html and refresh the page.'));
     return;
   }
 
-  const kindText = { video: 'Видео', pdf: 'Документ PDF', slides: 'Слайды', link: 'Ссылка' };
+  const kindText = { video: 'Video', pdf: 'PDF', slides: 'Slides', link: 'Link' };
   const videos = new Set();
+  let invitedRecordings = 0;
   const sectionLinks = new Map();
   const completed = readCompleted();
   let activeSection = getSection();
@@ -31,7 +32,10 @@
   for (const section of course.sections) {
     for (const group of section.groups) {
       for (const item of group.items) {
-        if (item.kind === 'video') videos.add(item.id);
+        if (item.kind === 'video') {
+          videos.add(item.id);
+          if (item.access === 'invitation') invitedRecordings += 1;
+        }
       }
     }
   }
@@ -40,7 +44,12 @@
   document.querySelector('#course-subtitle').textContent = course.subtitle || '';
   const meta = document.querySelector('#course-meta');
   const weeks = course.sections.filter(section => /^week-\d+$/.test(section.id)).length;
-  meta.textContent = [weeks && `${weeks} ${plural(weeks, 'неделя', 'недели', 'недель')}`, videos.size && `${videos.size} ${plural(videos.size, 'запись', 'записи', 'записей')}`].filter(Boolean).join(' · ');
+  const publicVideos = videos.size - invitedRecordings;
+  meta.textContent = [
+    weeks && `${weeks} ${plural(weeks, 'week', 'weeks')}`,
+    publicVideos && `${publicVideos} public ${plural(publicVideos, 'video', 'videos')}`,
+    invitedRecordings && `${invitedRecordings} invite-only ${plural(invitedRecordings, 'recording', 'recordings')}`,
+  ].filter(Boolean).join(' · ');
   meta.hidden = !meta.textContent;
   document.title = course.title;
 
@@ -79,15 +88,11 @@
     document.querySelector('#progress-box').hidden = videos.size === 0;
     progress.max = Math.max(videos.size, 1);
     progress.value = viewed;
-    progressCount.textContent = `${viewed} из ${videos.size}`;
+    progressCount.textContent = `${viewed} of ${videos.size}`;
   }
 
-  function plural(number, one, several, many) {
-    if (number % 100 >= 11 && number % 100 <= 14) return many;
-    const lastDigit = number % 10;
-    if (lastDigit === 1) return one;
-    if (lastDigit >= 2 && lastDigit <= 4) return several;
-    return many;
+  function plural(number, singular, pluralForm) {
+    return number === 1 ? singular : pluralForm;
   }
 
   function sectionHref(section) {
@@ -132,7 +137,7 @@
   }
 
   function normalize(value) {
-    return value.toLowerCase().replaceAll('ё', 'е').trim();
+    return value.toLowerCase().trim();
   }
 
   function matches(item, group, section, words) {
@@ -166,7 +171,7 @@
     }
     const index = course.sections.indexOf(section);
     const footer = element('nav', 'section-footer');
-    footer.setAttribute('aria-label', 'Следующий и предыдущий разделы');
+    footer.setAttribute('aria-label', 'Next and previous sections');
     const previous = course.sections[index - 1];
     const next = course.sections[index + 1];
     if (previous) footer.append(sectionLink(previous, 'action-button'));
@@ -181,11 +186,11 @@
       items: section.groups.flatMap(group => group.items.filter(item => matches(item, group, section, words)))
     })).filter(group => group.items.length);
     const count = groups.reduce((total, group) => total + group.items.length, 0);
-    const status = count ? `${count} ${plural(count, 'материал', 'материала', 'материалов')}` : 'Совпадений нет';
-    const header = sectionHeader('Результаты поиска', status);
+    const status = count ? `${count} ${plural(count, 'result', 'results')}` : 'No matches';
+    const header = sectionHeader('Search results', status);
     header.querySelector('p').setAttribute('role', 'status');
     const results = groups.map(group => renderGroup(group.items, group.title));
-    if (count === 0) results.push(element('p', 'empty-state', 'Попробуйте название темы, урока или имя автора.'));
+    if (count === 0) results.push(element('p', 'empty-state', 'Try a topic, lesson title, or speaker name.'));
     content.replaceChildren(header, ...results);
   }
 
@@ -234,21 +239,29 @@
     icon.setAttribute('aria-hidden', 'true');
     const info = element('div', 'item-info');
     info.append(element(titleTag, 'item-title', item.title));
-    const metadata = [kindText[item.kind], item.duration].filter(Boolean).join(' · ');
+    const kind = item.access === 'invitation' ? 'Google Drive · Invitation required' : kindText[item.kind];
+    const metadata = [kind, item.duration].filter(Boolean).join(' · ');
     if (metadata) info.append(element('p', 'item-meta', metadata));
     if (item.description) info.append(element('p', 'item-description', item.description));
     const actions = element('div', 'item-actions');
 
-    if (item.kind === 'video' && /^[A-Za-z0-9_-]{11}$/.test(item.youtubeId) && getUrl(item)) actions.append(...videoButtons(item, card));
+    if (item.kind === 'video' && item.access === 'invitation') {
+      const link = resourceLink(item, 'Watch on Google Drive');
+      if (link) {
+        link.classList.add('primary');
+        actions.append(link, completionButton(item));
+      }
+    }
+    else if (item.kind === 'video' && /^[A-Za-z0-9_-]{11}$/.test(item.youtubeId) && getUrl(item)) actions.append(...videoButtons(item, card));
     else if (item.kind === 'pdf') {
-      const open = resourceLink(item, 'Открыть PDF');
-      const download = resourceLink(item, 'Скачать', true);
+      const open = resourceLink(item, 'Open PDF');
+      const download = resourceLink(item, 'Download', true);
       if (open) actions.append(open);
       if (download && !isExternal(getUrl(item))) actions.append(download);
     } else {
       const url = getUrl(item);
       const download = item.kind === 'slides' && url && !isExternal(url);
-      const action = resourceLink(item, download ? 'Скачать слайды' : 'Открыть', download);
+      const action = resourceLink(item, download ? 'Download slides' : 'Open', download);
       if (action) actions.append(action);
     }
 
@@ -271,25 +284,29 @@
   }
 
   function videoButtons(item, card) {
-    const watch = element('button', 'action-button primary', 'Смотреть');
+    const watch = element('button', 'action-button primary', 'Watch');
     watch.type = 'button';
     watch.setAttribute('aria-expanded', 'false');
-    watch.setAttribute('aria-label', `Смотреть — ${item.title}`);
+    watch.setAttribute('aria-label', `Watch — ${item.title}`);
     watch.addEventListener('click', () => {
       if (activePlayer?.watch === watch) closePlayer();
       else openPlayer(item, card, watch);
     });
 
+    return [watch, completionButton(item)];
+  }
+
+  function completionButton(item) {
     const mark = element('button', 'action-button done');
     mark.type = 'button';
     updateMark(mark, item);
     mark.addEventListener('click', () => markVideo(item, mark, !completed.has(item.id)));
-    return [watch, mark];
+    return mark;
   }
 
   function updateMark(mark, item) {
     const viewed = completed.has(item.id);
-    const label = viewed ? 'Снять отметку о просмотре' : 'Отметить просмотренным';
+    const label = viewed ? 'Mark as unwatched' : 'Mark as watched';
     mark.textContent = viewed ? '✓' : '○';
     mark.title = label;
     mark.setAttribute('aria-label', `${label} — ${item.title}`);
@@ -314,13 +331,13 @@
     iframe.referrerPolicy = 'strict-origin-when-cross-origin';
     iframe.allowFullscreen = true;
     const footer = element('div', 'player-footer');
-    const direct = resourceLink(item, 'Открыть на YouTube');
+    const direct = resourceLink(item, 'Open on YouTube');
     if (direct) footer.append(direct);
     pane.append(iframe, footer);
     card.append(pane);
     watch.setAttribute('aria-expanded', 'true');
-    watch.setAttribute('aria-label', `Свернуть видео — ${item.title}`);
-    watch.textContent = 'Свернуть';
+    watch.setAttribute('aria-label', `Close video — ${item.title}`);
+    watch.textContent = 'Close';
     activePlayer = { pane, watch, item };
   }
 
@@ -329,8 +346,8 @@
     const { pane, watch, item } = activePlayer;
     pane.remove();
     watch.setAttribute('aria-expanded', 'false');
-    watch.setAttribute('aria-label', `Смотреть — ${item.title}`);
-    watch.textContent = 'Смотреть';
+    watch.setAttribute('aria-label', `Watch — ${item.title}`);
+    watch.textContent = 'Watch';
     activePlayer = undefined;
   }
 })();

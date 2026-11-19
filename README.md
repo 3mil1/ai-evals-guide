@@ -1,5 +1,5 @@
-# AI Evals. Открытые материалы
+# AI Evals Study Guide
 
-Независимый путеводитель по темам июльского потока курса Hamel Husain и Shreya Shankar. Здесь собраны ссылки на открытые видео, статьи, слайды и задания. Навигация и отметки о просмотре работают в браузере.
+An independent guide to the July 2025 AI Evals syllabus by Hamel Husain and Shreya Shankar, with public videos, articles, slides, and exercises. Watch progress stays in your browser.
 
-[Открыть сайт](https://3mil1.github.io/ai-evals-guide/)
+[Open the study guide](https://3mil1.github.io/ai-evals-guide/)
